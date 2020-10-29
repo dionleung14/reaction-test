@@ -1,6 +1,7 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <Cheeseburger msg="This is dion taking over, prepare for trouble" banana="9"/>
+  {{ salt }}
+  <Cheeseburger msg="This is dion taking over, prepare for trouble" :banana="{salt}"/>
 </template>
 
 <script>
@@ -10,17 +11,25 @@
     name: 'App',
     components: {
       Cheeseburger: HelloWorld
+    },
+    data() {
+      return {
+        salt: "heyyoooo"
+      }
     }
   }
 </script>
 
 <style>
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+
+body {
+  background: teal;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+}
 </style>
