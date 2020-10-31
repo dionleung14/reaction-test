@@ -28,7 +28,7 @@
 }
 
 body {
-  background: teal;
+  background: salmon;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
 }
