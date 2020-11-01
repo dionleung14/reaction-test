@@ -1,16 +1,21 @@
 <template>
+  <div>
   <img alt="Vue logo" src="./assets/logo.png">
   {{ salt }}
-  <Cheeseburger msg="This is dion taking over, prepare for trouble" :banana="{salt}"/>
+  <Cheeseburger msg="This is Dion taking over, prepare for trouble" :banana="{salt}"/>
+  <StartBtn />
+  </div>
 </template>
 
 <script>
   import HelloWorld from './components/HelloWorld.vue'
+  import StartBtn from './components/StartBtn.vue'
 
   export default {
     name: 'App',
     components: {
-      Cheeseburger: HelloWorld
+      Cheeseburger: HelloWorld,
+      StartBtn,
     },
     data() {
       return {
