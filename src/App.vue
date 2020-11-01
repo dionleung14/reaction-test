@@ -4,18 +4,21 @@
   {{ salt }}
   <Cheeseburger msg="This is Dion taking over, prepare for trouble" :banana="{salt}"/>
   <StartBtn />
+  <FinishBtn />
   </div>
 </template>
 
 <script>
   import HelloWorld from './components/HelloWorld.vue'
   import StartBtn from './components/StartBtn.vue'
+  import FinishBtn from './components/FinishBtn.vue'
 
   export default {
     name: 'App',
     components: {
       Cheeseburger: HelloWorld,
       StartBtn,
+      FinishBtn
     },
     data() {
       return {
