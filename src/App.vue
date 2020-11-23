@@ -45,15 +45,17 @@
     },
     methods: {
       start() {
-        if (this.attempts < 2) {
-          if (!this.started) {
-            this.started = !this.started;
-          }
+        if (this.attempts < 1) {
           this.attempts++;
           let randomInt = (Math.random() * 2000) + 2000
           console.log(randomInt / 1000)
           setTimeout( () => {
-            this.timeCounter = setInterval(() => {this.timeNumber += 1}, 1)
+            this.timeCounter = setInterval(() => {
+                    if (!this.started) {
+                      this.started = !this.started;
+                    }
+              this.timeNumber += 1
+              }, 1)
           }, randomInt)
         } else {
           let randomScare = (Math.random() * 2000) + 2000
@@ -65,9 +67,9 @@
       },
       quit() {
         clearInterval(this.timeCounter);
-        this.started = false; 
       },
       reset() {
+        this.started = false; 
         this.timeNumber = 0; 
       }
     },
