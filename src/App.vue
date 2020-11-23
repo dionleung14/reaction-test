@@ -1,61 +1,70 @@
 <template>
   <div>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <Cheeseburger msg="This is Dion taking over, prepare for trouble" :banana="{salt}"/>
-  <StartBtn v-on:start-reaction="escape"/>
-  <FinishBtn v-on:stop-reaction="quit" />
-  <Timer v-bind:time="timeCountUp" />
+    <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
+    <!-- <Cheeseburger msg="This is Dion taking over, prepare for trouble" :banana="{salt}"/> -->
+    <StartBtn v-on:start-reaction="start" />
+    <FinishBtn v-on:stop-reaction="quit" />
+    <br />
+    <button @click="reset">Reset</button>
+    <Timer v-bind:time="timeNumber" />
+    <br />
+    <div v-if="started">
+      time number: {{ timeNumber }}
+    </div>
   </div>
 </template>
 
 <script>
-  import HelloWorld from './components/HelloWorld.vue'
-  import StartBtn from './components/StartBtn.vue'
-  import FinishBtn from './components/FinishBtn.vue'
-  import Timer from './components/Timer.vue'
-
+  // import HelloWorld from './components/HelloWorld.vue'
+  import StartBtn from "./components/StartBtn.vue";
+  import FinishBtn from "./components/FinishBtn.vue";
+  import Timer from "./components/Timer.vue";
   export default {
-    name: 'App',
+    name: "App",
     components: {
-      Cheeseburger: HelloWorld,
+      // Cheeseburger: HelloWorld,
       StartBtn,
       FinishBtn,
-      Timer
+      Timer,
     },
     data() {
       return {
-        salt: "heyyoooo",
-        timeCountUp: 0
-      }
+        // salt: "heyyoooo",
+        timeCounter: setInterval(() => {this.timeNumber++}, 10),
+        timeNumber: 0,
+        started: false,
+      };
     },
     methods: {
-      escape(data) {
-        console.log("received it in app");
-        console.log(data)
-        this.start()
+      start() {
+        if (!this.started) {
+          this.started = !this.started
+        }
+        setTimeout( () => {
+          this.timeCounter = setInterval(() => {this.timeNumber += 1}, 10)
+        }, (Math.random() * 4000) + 2000)
       },
-      start(){
-        setInterval(()=>{this.timeCountUp++},1000)
+      quit() {
+        clearInterval(this.timeCounter);
       },
-      quit(data){
-        console.log("received stop in app")
-        console.log(data)
-        clearInterval(this.start)
+      reset() {
+        this.timeNumber = 0; 
       }
-    }
-  }
+    },
+  };
 </script>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0
-}
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
 
-body {
-  background: salmon;
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.4;
-}
+  body {
+    background: salmon;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.4;
+  }
 </style>

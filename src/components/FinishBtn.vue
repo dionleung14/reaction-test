@@ -1,6 +1,6 @@
 <template>
   <button @click="$emit('stop-reaction', 0)">
-    Finish
+    Stop
   </button>
 </template>
 
