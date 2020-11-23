@@ -1,12 +1,16 @@
 <template>
-  <button id="hello">
+  <button v-on:click="$emit('start-reaction', 0)" id="hello">
     Start
   </button>
 </template>
 
 <script>
 export default {
-  
+  methods: {
+    pump() {
+      // $this.$emit("yes")
+    }
+  }
 }
 </script>
 
