@@ -35,14 +35,19 @@
         started: false,
       };
     },
+    created() {
+      clearInterval(this.timeCounter);
+    },
     methods: {
       start() {
         if (!this.started) {
-          this.started = !this.started
+          this.started = !this.started;
         }
+        let randomInt = (Math.random() * 2500) + 2000
+        console.log(randomInt / 1000)
         setTimeout( () => {
           this.timeCounter = setInterval(() => {this.timeNumber += 1}, 10)
-        }, (Math.random() * 4000) + 2000)
+        }, randomInt)
       },
       quit() {
         clearInterval(this.timeCounter);
