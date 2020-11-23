@@ -37,6 +37,7 @@
         timeNumber: 0,
         started: false,
         attempts: 0,
+        limit: 1,
         scare: false
       };
     },
@@ -45,7 +46,7 @@
     },
     methods: {
       start() {
-        if (this.attempts < 1) {
+        if (this.attempts <= this.limit) {
           this.attempts++;
           let randomInt = (Math.random() * 2000) + 2000
           console.log(randomInt / 1000)
@@ -57,16 +58,20 @@
               this.timeNumber += 1
               }, 1)
           }, randomInt)
-        } else {
-          let randomScare = (Math.random() * 2000) + 2000
-          console.log(randomScare / 1000)
-          setTimeout( () => {
-            this.scare = true
-            }, randomScare)
-        }
+        } 
+        // else {
+        //   let randomScare = (Math.random() * 2000) + 2000
+        //   console.log(randomScare / 1000)
+        //   setTimeout( () => {
+        //     this.scare = true
+        //     }, randomScare)
+        // }
       },
       quit() {
         clearInterval(this.timeCounter);
+        if (this.attempts > this.limit) {
+          this.scare = true
+        }
       },
       reset() {
         this.started = false; 
