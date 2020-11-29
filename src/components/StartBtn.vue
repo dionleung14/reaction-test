@@ -13,7 +13,8 @@ export default {
 <style scoped>
   button {
     color: green;
-    padding: 3px;
+    padding: 10px;
+    font-size: 20px;
   }
   #hello {
     background-color: aqua;

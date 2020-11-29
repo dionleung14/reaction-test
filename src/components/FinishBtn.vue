@@ -14,8 +14,6 @@ export default {
   button {
     color: green;
     padding: 3px;
-  }
-  #hello {
-    background-color: aqua;
+    font-size: 20px;
   }
 </style>

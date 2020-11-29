@@ -1,18 +1,21 @@
 <template>
   <div>
-    <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
-    <!-- <Cheeseburger msg="This is Dion taking over, prepare for trouble" :banana="{salt}"/> -->
-    <StartBtn v-on:start-reaction="start" />
-    <FinishBtn v-on:stop-reaction="quit" />
-    <br />
+    <div v-if="!started">
+      <StartBtn v-on:start-reaction="start" />
+    </div>
+    <div>
+      <FinishBtn v-on:stop-reaction="quit" />
+    </div>
     <button @click="reset">Reset</button>
-    <Timer v-bind:time="timeNumber" />
     <br />
     <div v-if="started">
-      time number: {{ timeNumber }}
+      <!-- <Timer v-bind:time="timeNumber" /> -->
+      <Timer v-bind:time="timeNumber / 100" />
+      <!-- <Timer v-bind:time="timeNumber % 100" />
+      <Timer v-bind:time="timeNumber % 10" /> -->
     </div>
     <div v-if="scare">
-      Boo
+      <JumpScare />
     </div>
   </div>
 </template>
@@ -22,6 +25,8 @@
   import StartBtn from "./components/StartBtn.vue";
   import FinishBtn from "./components/FinishBtn.vue";
   import Timer from "./components/Timer.vue";
+  import JumpScare from "./components/JumpScare.vue"
+
   export default {
     name: "App",
     components: {
@@ -29,6 +34,7 @@
       StartBtn,
       FinishBtn,
       Timer,
+      JumpScare
     },
     data() {
       return {
