@@ -1,29 +1,33 @@
 <template>
-  <div class="flex">
-    <div v-if="!startClicked">
-      <StartBtn v-on:start-reaction="start" />
-    </div>
-    <div>
-      <FinishBtn v-on:stop-reaction="quit" />
-    </div>
-    <div>
-      <ResetBtn v-on:reset="reset" />
-    </div>
-    <br />
-    <div v-if="started">
-      <!-- <Timer v-bind:time="timeNumber" /> -->
-      <Timer v-bind:time="timeNumber / 100 + 's'" />
-      <!-- <Timer v-bind:time="timeNumber % 100" />
+  <div>
+    <Welcome />
+    <div class="flex">
+      <div v-if="!startClicked">
+        <StartBtn v-on:start-reaction="start" />
+      </div>
+      <div>
+        <FinishBtn v-on:stop-reaction="quit" />
+      </div>
+      <div>
+        <ResetBtn v-on:reset="reset" />
+      </div>
+      <br />
+      <div v-if="started">
+        <!-- <Timer v-bind:time="timeNumber" /> -->
+        <Timer v-bind:time="timeNumber / 100 + 's'" />
+        <!-- <Timer v-bind:time="timeNumber % 100" />
       <Timer v-bind:time="timeNumber % 10" /> -->
-    </div>
-    <div v-if="scare">
-      <JumpScare />
+      </div>
+      <div v-if="scare">
+        <JumpScare />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
   // import HelloWorld from './components/HelloWorld.vue'
+  import Welcome from "./components/Welcome.vue";
   import StartBtn from "./components/StartBtn.vue";
   import FinishBtn from "./components/FinishBtn.vue";
   import ResetBtn from "./components/ResetBtn.vue";
@@ -39,6 +43,7 @@
       Timer,
       JumpScare,
       ResetBtn,
+      Welcome,
     },
     data() {
       return {
