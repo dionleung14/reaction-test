@@ -19,4 +19,8 @@ export default {
   #hello {
     background-color: aqua;
   }
+  #hello:hover {
+    background-color: blue;
+    cursor: pointer;
+  }
 </style>
